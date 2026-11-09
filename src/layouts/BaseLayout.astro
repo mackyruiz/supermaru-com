@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+interface Props { title: string; description?: string; ogImage?: string; canonicalPath: string }
+const { title, description = 'Notes on homelabs, virtualization, networking, Linux, and security. — Macky Ruiz', ogImage, canonicalPath } = Astro.props;
+const fullTitle = canonicalPath === '/' ? 'SuperMaru' : `${title} · SuperMaru`;
+const canonical = new URL(canonicalPath, Astro.site!);
+const image = ogImage ? new URL(ogImage, Astro.site!).href : undefined;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="SuperMaru" href="/rss.xml" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="SuperMaru" />
+    <meta property="og:type" content={/^\/\d{4}\/\d{2}\/.+/.test(canonicalPath) ? 'article' : 'website'} />
+    {image && <meta property="og:image" content={image} />}
+    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {image && <meta name="twitter:image" content={image} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="wordmark" href="/">SuperMaru<span aria-hidden="true">.</span></a>
+        <nav aria-label="Main navigation"><a href="/">Home</a><span aria-hidden="true">·</span><a href="/about/">About</a><span aria-hidden="true">·</span><a href="/rss.xml">RSS</a></nav>
+      </header>
+      <main id="main"><slot /></main>
+      <footer>© {new Date().getFullYear()} Macky Ruiz</footer>
+    </div>
+  </body>
+</html>

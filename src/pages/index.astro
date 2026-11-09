@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { allPosts, postPath } from '../lib/posts';
+const posts = await allPosts();
+const years = [...new Set(posts.map(post => postPath(post).split('/')[0]))];
+---
+<BaseLayout title="SuperMaru" canonicalPath="/">
+  <section class="intro">
+    <p class="eyebrow">A personal field notebook</p>
+    <h1>SuperMaru</h1>
+    <p>Notes on homelabs, virtualization, networking, Linux, and security. <span class="muted">— Macky Ruiz</span></p>
+  </section>
+  {years.map(year => <section class="year-group" aria-labelledby={`year-${year}`}>
+    <h2 id={`year-${year}`}><a href={`/${year}/`}>{year}</a></h2>
+    <PostList posts={posts.filter(post => postPath(post).startsWith(year + '/'))} />
+  </section>)}
+</BaseLayout>

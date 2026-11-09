@@ -1,0 +1,74 @@
+{
+  "restart-network-services-ubuntu-14-04": [
+    {
+      "author": "romney",
+      "date": "2016-01-13T06:44:04",
+      "html": "<p>God bless ya!</p>\n<p>It was driving me nuts because suddenly it just did not work (although it was fine before). Great you figured it out and thank you for sharing it!!!</p>\n<p>P.S.: It&#8217;s quite strange that it works that way as root indeed&#8230;. Anyway, I&#8217;d like to mention as well that the network icon disappeared after restarting the network-manager. It&#8217;s possible to get it back via running &#8220;nm-applet&#8221; from user terminal.</p>\n"
+    },
+    {
+      "author": "maru45",
+      "date": "2017-01-10T18:37:31",
+      "html": "<p>Glad I managed to help! Good to know I can get the applet back by running that command. Thanks for the tip!</p>\n"
+    }
+  ],
+  "modifying-an-ova-vmx-hardware-version": [
+    {
+      "author": "Almaz",
+      "date": "2016-05-02T14:39:20",
+      "html": "<p>Awesome, thanks!</p>\n"
+    },
+    {
+      "author": "maru45",
+      "date": "2017-01-10T18:36:35",
+      "html": "<p>You&#8217;re welcome Almaz!</p>\n"
+    },
+    {
+      "author": "Angus",
+      "date": "2018-03-21T05:05:20",
+      "html": "<p>When I saw you mention the .mf file is just for integrity checking I tried deleting it instead of updating it &#8211; worked a treat &#8211; thanks!</p>\n"
+    }
+  ],
+  "hot-add-cpu-memory-ubuntu-guest-vmware": [
+    {
+      "author": "Leon",
+      "date": "2017-01-23T11:10:35",
+      "html": "<p>Thank you, it&#8217;s a very useful script!</p>\n"
+    },
+    {
+      "author": "Macky Ruiz",
+      "date": "2017-02-02T10:30:54",
+      "html": "<p>Glad it helped!</p>\n"
+    },
+    {
+      "author": "Isaac",
+      "date": "2018-02-15T12:08:25",
+      "html": "<p>Nice script, so usefull thank you! 😉</p>\n"
+    },
+    {
+      "author": "Kim",
+      "date": "2018-06-20T12:11:57",
+      "html": "<p>When I tried to &#8220;online&#8221; the newly added memory, it fails:</p>\n<p>echo: write error: Operation not permitted</p>\n"
+    }
+  ],
+  "apt-get-unable-lock-download-directory": [
+    {
+      "author": "manish",
+      "date": "2018-03-15T08:57:20",
+      "html": "<p>For me only this one command helped &#8220;sudo dpkg &#8211;configure -a&#8221;</p>\n"
+    }
+  ],
+  "ubuntu-zfs-samba-share": [
+    {
+      "author": "Diego",
+      "date": "2018-05-12T08:28:54",
+      "html": "<p>is it possible to use a sharename with spaces like &#8220;sharename=tank export&#8221;?<br />\nI can&#8217;t get it to work</p>\n"
+    }
+  ],
+  "enabling-vnc-esxi": [
+    {
+      "author": "Volker",
+      "date": "2018-09-25T00:40:35",
+      "html": "<p>Thanks a lot for the details. Using ESXI 6.7, the settings will be always reseted once the server restarts. Is there a way to make the settings permanent?</p>\n"
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "categories": [
+    {
+      "path": "cisco",
+      "name": "Cisco"
+    },
+    {
+      "path": "conferences",
+      "name": "Conferences"
+    },
+    {
+      "path": "data-center",
+      "name": "Datacenters"
+    },
+    {
+      "path": "cisco/devnet",
+      "name": "DevNet"
+    },
+    {
+      "path": "data-center/vmware/esxi",
+      "name": "ESXi"
+    },
+    {
+      "path": "homelab",
+      "name": "HomeLab"
+    },
+    {
+      "path": "linux",
+      "name": "linux"
+    },
+    {
+      "path": "nas",
+      "name": "NAS"
+    },
+    {
+      "path": "networking",
+      "name": "Networking"
+    },
+    {
+      "path": "homelab/raspberry-pi",
+      "name": "Raspberry Pi"
+    },
+    {
+      "path": "security",
+      "name": "security"
+    },
+    {
+      "path": "tips-and-tricks",
+      "name": "tips and tricks"
+    },
+    {
+      "path": "uncategorized",
+      "name": "Uncategorized"
+    },
+    {
+      "path": "updates",
+      "name": "Updates"
+    },
+    {
+      "path": "data-center/vmware",
+      "name": "VMware"
+    },
+    {
+      "path": "data-center/vmware/vsphere",
+      "name": "vSphere"
+    },
+    {
+      "path": "networking/wireless",
+      "name": "Wireless"
+    }
+  ],
+  "tags": [
+    {
+      "path": "100daysofcode",
+      "name": "100daysofcode"
+    },
+    {
+      "path": "6-0",
+      "name": "6.0"
+    },
+    {
+      "path": "6-0-u1",
+      "name": "6.0 U1"
+    },
+    {
+      "path": "administration",
+      "name": "administration"
+    },
+    {
+      "path": "aircrack-ng",
+      "name": "aircrack-ng"
+    },
+    {
+      "path": "authentication",
+      "name": "authentication"
+    },
+    {
+      "path": "aws",
+      "name": "AWS"
+    },
+    {
+      "path": "bind",
+      "name": "bind"
+    },
+    {
+      "path": "bootable-image",
+      "name": "bootable image"
+    },
+    {
+      "path": "bsides",
+      "name": "bsides"
+    },
+    {
+      "path": "ccna",
+      "name": "CCNA"
+    },
+    {
+      "path": "certification",
+      "name": "certification"
+    },
+    {
+      "path": "cisco",
+      "name": "cisco"
+    },
+    {
+      "path": "cit016",
+      "name": "cit016"
+    },
+    {
+      "path": "cli",
+      "name": "cli"
+    },
+    {
+      "path": "console",
+      "name": "console"
+    },
+    {
+      "path": "cooling",
+      "name": "cooling"
+    },
+    {
+      "path": "ctf",
+      "name": "ctf"
+    },
+    {
+      "path": "dcui",
+      "name": "dcui"
+    },
+    {
+      "path": "defcon",
+      "name": "defcon"
+    },
+    {
+      "path": "devnet",
+      "name": "DevNet"
+    },
+    {
+      "path": "dhcp",
+      "name": "DHCP"
+    },
+    {
+      "path": "diy",
+      "name": "DIY"
+    },
+    {
+      "path": "dnac",
+      "name": "DNAC"
+    },
+    {
+      "path": "dns",
+      "name": "dns"
+    },
+    {
+      "path": "dos",
+      "name": "DOS"
+    },
+    {
+      "path": "esxcli",
+      "name": "esxcli"
+    },
+    {
+      "path": "esxi",
+      "name": "esxi"
+    },
+    {
+      "path": "ethical-hacking",
+      "name": "ethical hacking"
+    },
+    {
+      "path": "fabric-interconnect",
+      "name": "fabric interconnect"
+    },
+    {
+      "path": "firewall",
+      "name": "firewall"
+    },
+    {
+      "path": "freenas",
+      "name": "freenas"
+    },
+    {
+      "path": "guest-vm",
+      "name": "guest-vm"
+    },
+    {
+      "path": "h4x0rj0y",
+      "name": "H4X0RJ0Y"
+    },
+    {
+      "path": "hackthissite-org",
+      "name": "hackthissite.org"
+    },
+    {
+      "path": "hardware",
+      "name": "hardware"
+    },
+    {
+      "path": "html",
+      "name": "html"
+    },
+    {
+      "path": "http",
+      "name": "HTTP"
+    },
+    {
+      "path": "kernel",
+      "name": "kernel"
+    },
+    {
+      "path": "kvm",
+      "name": "kvm"
+    },
+    {
+      "path": "linux",
+      "name": "linux"
+    },
+    {
+      "path": "mission-college",
+      "name": "mission college"
+    },
+    {
+      "path": "mssh",
+      "name": "mssh"
+    },
+    {
+      "path": "nas",
+      "name": "NAS"
+    },
+    {
+      "path": "network-testing",
+      "name": "network testing"
+    },
+    {
+      "path": "networking",
+      "name": "networking"
+    },
+    {
+      "path": "opensource",
+      "name": "opensource"
+    },
+    {
+      "path": "openvpn",
+      "name": "openvpn"
+    },
+    {
+      "path": "ova",
+      "name": "ova"
+    },
+    {
+      "path": "ovf",
+      "name": "ovf"
+    },
+    {
+      "path": "passwords",
+      "name": "passwords"
+    },
+    {
+      "path": "performance-testing",
+      "name": "performance testing"
+    },
+    {
+      "path": "preview-build",
+      "name": "preview build"
+    },
+    {
+      "path": "programming",
+      "name": "programming"
+    },
+    {
+      "path": "python",
+      "name": "python"
+    },
+    {
+      "path": "raspberry-pi",
+      "name": "raspberry pi"
+    },
+    {
+      "path": "rdp",
+      "name": "RDP"
+    },
+    {
+      "path": "security",
+      "name": "security"
+    },
+    {
+      "path": "serial",
+      "name": "serial"
+    },
+    {
+      "path": "sha1sum",
+      "name": "sha1sum"
+    },
+    {
+      "path": "smb",
+      "name": "smb"
+    },
+    {
+      "path": "spotify",
+      "name": "spotify"
+    },
+    {
+      "path": "ssh",
+      "name": "ssh"
+    },
+    {
+      "path": "stickers",
+      "name": "stickers"
+    },
+    {
+      "path": "storage",
+      "name": "storage"
+    },
+    {
+      "path": "telnet",
+      "name": "telnet"
+    },
+    {
+      "path": "temperature",
+      "name": "temperature"
+    },
+    {
+      "path": "testing",
+      "name": "testing"
+    },
+    {
+      "path": "tips-and-tricks",
+      "name": "tips and tricks"
+    },
+    {
+      "path": "tradeshows",
+      "name": "tradeshows"
+    },
+    {
+      "path": "two-factor",
+      "name": "two factor"
+    },
+    {
+      "path": "ubuntu",
+      "name": "ubuntu"
+    },
+    {
+      "path": "ucsm",
+      "name": "ucsm"
+    },
+    {
+      "path": "update",
+      "name": "update"
+    },
+    {
+      "path": "vcenter",
+      "name": "vCenter"
+    },
+    {
+      "path": "vcsa",
+      "name": "VCSA"
+    },
+    {
+      "path": "vibe-design",
+      "name": "vibe-design"
+    },
+    {
+      "path": "virtualization",
+      "name": "virtualization"
+    },
+    {
+      "path": "vm",
+      "name": "vm"
+    },
+    {
+      "path": "vmware",
+      "name": "vmware"
+    },
+    {
+      "path": "vmworld",
+      "name": "vmworld"
+    },
+    {
+      "path": "vmworld2014",
+      "name": "vmworld2014"
+    },
+    {
+      "path": "vmx",
+      "name": "vmx"
+    },
+    {
+      "path": "vnc",
+      "name": "VNC"
+    },
+    {
+      "path": "vpn",
+      "name": "vpn"
+    },
+    {
+      "path": "vulnerability",
+      "name": "vulnerability"
+    },
+    {
+      "path": "wifi",
+      "name": "wifi"
+    },
+    {
+      "path": "windows",
+      "name": "Windows"
+    },
+    {
+      "path": "wireless",
+      "name": "wireless"
+    },
+    {
+      "path": "wpa2",
+      "name": "wpa2"
+    },
+    {
+      "path": "wsl",
+      "name": "WSL"
+    },
+    {
+      "path": "zfs",
+      "name": "zfs"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+---
+import { allPosts } from '../../lib/posts';
+import { categories } from '../../data/taxonomies.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  const paths = new Set([...categories.map(term => term.path), ...posts.flatMap(post => post.data.categories)]);
+  return [...paths].map(path => ({ params: { path }, props: {
+    posts: posts.filter(post => post.data.categories.some(term => term === path || term.startsWith(path + '/'))),
+    name: categories.find(term => term.path === path)?.name ?? path.split('/').at(-1)!.replaceAll('-', ' ').replace(/\b\w/g, letter => letter.toUpperCase()),
+  } }));
+}
+const { posts, name } = Astro.props;
+const title = `Category: ${name}`;
+---
+<BaseLayout title={title} canonicalPath={`/category/${Astro.params.path}/`}><h1>{title}</h1><PostList posts={posts} /></BaseLayout>

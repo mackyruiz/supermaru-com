@@ -1,0 +1,14 @@
+---
+import { allPosts, postPath } from '../../lib/posts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  return [...new Set(posts.map(post => postPath(post).split('/')[0]))].map(year => ({
+    params: { year }, props: { posts: posts.filter(post => postPath(post).startsWith(year + '/')) },
+  }));
+}
+const { posts } = Astro.props;
+const title = `Posts from ${Astro.params.year}`;
+---
+<BaseLayout title={title} canonicalPath={`/${Astro.params.year}/`}><h1>{title}</h1><PostList posts={posts} /></BaseLayout>

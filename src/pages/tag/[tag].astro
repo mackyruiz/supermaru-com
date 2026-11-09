@@ -1,0 +1,14 @@
+---
+import { allPosts } from '../../lib/posts';
+import { tags } from '../../data/taxonomies.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  const paths = new Set([...tags.map(term => term.path), ...posts.flatMap(post => post.data.tags)]);
+  return [...paths].map(tag => ({ params: { tag }, props: { posts: posts.filter(post => post.data.tags.includes(tag)), name: tags.find(term => term.path === tag)?.name ?? tag } }));
+}
+const { posts, name } = Astro.props;
+const title = `Tagged "${name}"`;
+---
+<BaseLayout title={title} canonicalPath={`/tag/${Astro.params.tag}/`}><h1>{title}</h1><PostList posts={posts} /></BaseLayout>
