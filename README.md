@@ -60,11 +60,11 @@ Both source scripts use `--resolve www.supermaru.com:443:208.109.28.20` because 
 
 The workflow in `.github/workflows/deploy.yml` uses the official [Astro Pages recipe](https://docs.astro.build/en/guides/deploy/github/) with checkout v7, withastro/action v6, and deploy-pages v5. Production builds are static; React and Keystatic integrations are development-only. `public/CNAME` records `www.supermaru.com` for possible branch-based publishing, but Actions publishing uses the repository Pages setting.
 
-1. Create the public `supermaru-com` repository and push branch `main`.
-2. Set Settings → Pages → Source to GitHub Actions.
-3. Verify the first green workflow and the GitHub Pages URL **before changing DNS**. A project repository initially serves at `https://<owner>.github.io/supermaru-com/`; because production paths target the custom domain root, verify the deployed artifact and custom domain before cutover rather than treating the project URL as proof that root-relative assets work.
-4. Set repository Pages custom domain to `www.supermaru.com`.
-5. Optionally verify domain ownership with GitHub's `_github-pages-challenge-<owner>` TXT record.
+1. Public repository: https://github.com/mackyruiz/supermaru-com, branch `main`.
+2. Settings → Pages → Source is configured to GitHub Actions.
+3. The [first workflow](https://github.com/mackyruiz/supermaru-com/actions/runs/42652018022) built and deployed successfully. The initial project URL `https://mackyruiz.github.io/supermaru-com/` served the homepage before custom-domain configuration. Production paths intentionally target the custom domain root, not the repository subpath.
+4. Pages custom domain is configured to `www.supermaru.com`. Before DNS changes, requests pinned to GitHub's `185.199.108.153` over HTTP returned 200 for both `/2015/10/speedtest-cli-on-ubuntu/` and `/category/data-center/vmware/esxi/`. HTTPS is not yet enforced; provision and enable it after DNS propagation.
+5. Optionally verify domain ownership with GitHub's `_github-pages-challenge-mackyruiz` TXT record.
 
 ## DNS cutover and rollback
 
@@ -74,7 +74,7 @@ At GoDaddy, lower the existing apex A record TTL to 600 and wait out its old 108
 
 - A: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
 - AAAA: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
-- CNAME `www` → `<owner>.github.io` (no repository path)
+- CNAME `www` → `mackyruiz.github.io` (no repository path)
 
 Delete only the obsolete TXT `v=spf1 a mx ptr include:secureserver.net ~all`. Preserve **all** Proton records, including:
 
