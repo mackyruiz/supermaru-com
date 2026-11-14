@@ -1,11 +1,19 @@
 ---
 import '../styles/global.css';
-import { SITE_DESCRIPTION } from '../lib/site';
 interface Props { title: string; description?: string; ogImage?: string; canonicalPath: string }
-const { title, description = SITE_DESCRIPTION, ogImage, canonicalPath } = Astro.props;
-const fullTitle = canonicalPath === '/' ? 'SuperMaru' : `${title} · SuperMaru`;
+const { title, description = 'Portfolio and resume of Macky Ruiz', ogImage, canonicalPath } = Astro.props;
+const fullTitle = canonicalPath === '/' ? 'Macky Ruiz' : `${title} · Macky Ruiz`;
 const canonical = new URL(canonicalPath, Astro.site!);
 const image = ogImage ? new URL(ogImage, Astro.site!).href : undefined;
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/resume/', label: 'Resume' },
+  { href: '/contact/', label: 'Contact' },
+  { href: '/links/', label: 'Links' },
+];
+const isCurrent = (href: string) => href === '/' ? canonicalPath === '/' : canonicalPath.startsWith(href);
 ---
 <!doctype html>
 <html lang="en">
@@ -15,12 +23,11 @@ const image = ogImage ? new URL(ogImage, Astro.site!).href : undefined;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" type="application/rss+xml" title="SuperMaru" href="/rss.xml" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:site_name" content="SuperMaru" />
-    <meta property="og:type" content={/^\/\d{4}\/\d{2}\/.+/.test(canonicalPath) ? 'article' : 'website' } />
+    <meta property="og:site_name" content="Macky Ruiz" />
+    <meta property="og:type" content="website" />
     {image && <meta property="og:image" content={image} />}
     <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={fullTitle} />
@@ -37,13 +44,10 @@ const image = ogImage ? new URL(ogImage, Astro.site!).href : undefined;
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="container site-header__inner">
-        <a class="wordmark" href="/">SuperMaru</a>
+        <a class="wordmark" href="/">Macky Ruiz</a>
         <nav aria-label="Main">
           <ul role="list">
-            <li><a href="/#archive">Archive</a></li>
-            <li><a href="/#topics">Topics</a></li>
-            <li><a href="/about/" aria-current={canonicalPath === '/about/' ? 'page' : undefined}>About</a></li>
-            <li><a href="/rss.xml">RSS</a></li>
+            {nav.map(item => <li><a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a></li>)}
           </ul>
         </nav>
       </div>
@@ -52,12 +56,13 @@ const image = ogImage ? new URL(ogImage, Astro.site!).href : undefined;
     <footer class="site-footer">
       <div class="container site-footer__inner">
         <div class="site-footer__block">
-          <span class="wordmark">SuperMaru</span>
-          <p class="muted">{SITE_DESCRIPTION}</p>
+          <span class="wordmark">Macky Ruiz</span>
+          <p class="muted">Portfolio and resume</p>
         </div>
         <ul role="list" class="site-footer__links">
           <li><a href="/about/">About</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="https://github.com/mackyruiz">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/mackyruiz">LinkedIn</a></li>
           <li><a href="https://www.youtube.com/@PidgeyAdobo">YouTube</a></li>
         </ul>

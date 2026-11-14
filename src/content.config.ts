@@ -2,22 +2,18 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-const posts = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: z.object({
     title: z.string(),
-    pubDate: z.coerce.date(),
-    description: z.string().optional(),
-    categories: z.array(z.string()).default([]),
-    tags: z.array(z.string()).default([]),
-    heroImage: z.string().optional(),
-    urlPath: z.string().optional(),
-    wpId: z.number().optional(),
-    draft: z.boolean().default(false),
+    description: z.string(),
+    date: z.coerce.date(),
+    tags: z.array(z.string()).optional(),
+    link: z.string().url().optional(),
+    github: z.string().url().optional(),
+    image: z.string().optional(),
+    featured: z.boolean().default(false),
   }),
 });
-const pages = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
-  schema: z.object({ title: z.string() }),
-});
-export const collections = { posts, pages };
+
+export const collections = { projects };

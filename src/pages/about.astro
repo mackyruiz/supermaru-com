@@ -1,11 +1,20 @@
 ---
-import { getEntry, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHead from '../components/PageHead.astro';
-const page = (await getEntry('pages', 'about'))!;
-const { Content } = await render(page);
 ---
-<BaseLayout title={page.data.title} canonicalPath="/about/">
-  <PageHead title={page.data.title} />
-  <div class="container page-body"><div class="prose"><Content /></div></div>
+<BaseLayout title="About" description="About Macky Ruiz" canonicalPath="/about/">
+  <div class="container page-body">
+    <h1>About</h1>
+    <div class="prose">
+      <p class="lead">Replace this with your bio and background.</p>
+
+      <h2>Background</h2>
+      <p>Your professional background, interests, and expertise areas go here.</p>
+
+      <h2>Interests</h2>
+      <p>Homelabs, virtualization, networking, Linux, security, infrastructure automation.</p>
+
+      <h2>Currently</h2>
+      <p>What you're working on or learning right now.</p>
+    </div>
+  </div>
 </BaseLayout>

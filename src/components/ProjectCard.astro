@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { project: CollectionEntry<'projects'>; }
+const { project } = Astro.props;
+const { title, description, date, tags, link, github } = project.data;
+const displayDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', timeZone: 'UTC' }).format(date);
+---
+<article class="project-card">
+  <h3><a href={`/projects/${project.id}/`}>{title}</a></h3>
+  <time class="cool" datetime={date.toISOString()}>{displayDate}</time>
+  <p>{description}</p>
+  {tags && tags.length > 0 && (
+    <div class="project-tags">
+      {tags.map(tag => <span class="chip">{tag}</span>)}
+    </div>
+  )}
+  {(link || github) && (
+    <div class="project-links">
+      {link && <a href={link} class="project-link">View Project →</a>}
+      {github && <a href={github} class="project-link">GitHub →</a>}
+    </div>
+  )}
+</article>

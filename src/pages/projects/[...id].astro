@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, description, date, tags, link, github } = project.data;
+const displayDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' }).format(date);
+---
+<BaseLayout title={title} description={description} canonicalPath={`/projects/${project.id}/`}>
+  <article class="container page-body">
+    <header class="project-header">
+      <h1>{title}</h1>
+      <time class="cool" datetime={date.toISOString()}>{displayDate}</time>
+
+      {tags && tags.length > 0 && (
+        <div class="project-tags">
+          {tags.map(tag => <span class="chip">{tag}</span>)}
+        </div>
+      )}
+
+      {(link || github) && (
+        <div class="project-links">
+          {link && <a href={link} class="button">View Project</a>}
+          {github && <a href={github} class="button button--secondary">View on GitHub</a>}
+        </div>
+      )}
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <nav class="project-nav">
+      <a href="/projects/">&larr; Back to Projects</a>
+    </nav>
+  </article>
+</BaseLayout>

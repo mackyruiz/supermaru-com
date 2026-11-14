@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Resume" description="Resume and work experience" canonicalPath="/resume/">
+  <div class="container page-body">
+    <h1>Resume</h1>
+
+    <section class="resume-section">
+      <h2>Experience</h2>
+      <div class="resume-item">
+        <h3>Job Title</h3>
+        <p class="muted">Company Name • Start Date – End Date</p>
+        <p>Brief description of role and accomplishments.</p>
+      </div>
+
+      <!-- Add more resume-item blocks for each position -->
+    </section>
+
+    <section class="resume-section">
+      <h2>Education</h2>
+      <div class="resume-item">
+        <h3>Degree</h3>
+        <p class="muted">Institution • Year</p>
+      </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>Skills</h2>
+      <div class="skill-grid">
+        <div class="skill-category">
+          <h3>Infrastructure</h3>
+          <p>VMware, ESXi, vSphere, Kubernetes, Docker</p>
+        </div>
+        <div class="skill-category">
+          <h3>Networking</h3>
+          <p>Cisco, routing, switching, VLANs, VPNs</p>
+        </div>
+        <div class="skill-category">
+          <h3>Security</h3>
+          <p>Linux hardening, penetration testing, security auditing</p>
+        </div>
+        <div class="skill-category">
+          <h3>Automation</h3>
+          <p>Ansible, Python, Bash scripting</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="resume-download">
+      <a href="/resume.pdf" class="button" download>Download PDF Resume</a>
+    </div>
+  </div>
+</BaseLayout>

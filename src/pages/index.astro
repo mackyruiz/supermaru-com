@@ -1,72 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PostList from '../components/PostList.astro';
-import { allPosts, postPath, formatDate } from '../lib/posts';
-import { categoryName } from '../lib/taxonomies';
-import { SITE_DESCRIPTION } from '../lib/site';
-import taxonomies from '../data/taxonomies.json';
-const posts = await allPosts();
-const latest = posts[0];
-const latestUrl = `/${postPath(latest)}/`;
-const years = [...new Set(posts.map(post => postPath(post).split('/')[0]))];
-const firstYear = years.at(-1);
-const topics = taxonomies.categories
-  .filter(term => !term.path.includes('/'))
-  .map(term => ({
-    path: term.path,
-    name: categoryName(term.path),
-    count: posts.filter(post => post.data.categories.some(category => category === term.path || category.startsWith(term.path + '/'))).length,
-  }))
-  .filter(topic => topic.count > 0)
-  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const featured = projects.filter(p => p.data.featured).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 ---
-<BaseLayout title="SuperMaru" canonicalPath="/">
-  <section class="home-hero">
-    <div class="container home-hero__grid">
-      <div>
-        <h1 class="display">SuperMaru</h1>
-        <p class="lead">{SITE_DESCRIPTION}</p>
-        <dl class="readings">
-          <div><dt>Posts</dt><dd class="measured">{posts.length}</dd></div>
-          <div><dt>Topics</dt><dd class="measured">{topics.length}</dd></div>
-          <div><dt>Writing since</dt><dd class="measured">{firstYear}</dd></div>
-        </dl>
-      </div>
-      <article class="latest panels">
-        <div>
-          {latest.data.heroImage && <a class="latest__media" href={latestUrl} tabindex="-1" aria-hidden="true"><img src={latest.data.heroImage} alt="" fetchpriority="high" decoding="async" /></a>}
-          <div class="latest__body">
-            <time class="measured cool" datetime={latest.data.pubDate.toISOString()}>{formatDate(latest.data.pubDate)}</time>
-            <h2 class="latest__title"><a href={latestUrl}>{latest.data.title}</a></h2>
-            <p class="muted">{latest.data.description}</p>
-            <a class="text-link" href={latestUrl}>Read the post</a>
-          </div>
+<BaseLayout title="Macky Ruiz" description="Portfolio and resume" canonicalPath="/">
+  <div class="container hero">
+    <h1 class="display">Macky Ruiz</h1>
+    <p class="lead">Infrastructure engineer, security practitioner, homelab enthusiast</p>
+    <div class="hero-links">
+      <a href="/projects/" class="button">View Projects</a>
+      <a href="/contact/" class="button button--secondary">Get in Touch</a>
+    </div>
+  </div>
+
+  {featured.length > 0 && (
+    <section class="home-section">
+      <div class="container">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+          {featured.map(project => <ProjectCard project={project} />)}
         </div>
-      </article>
-    </div>
-  </section>
-  <section id="topics" class="home-section">
-    <div class="container">
-      <h2>Browse by topic</h2>
-      <ul class="topics panels" role="list">
-        {topics.map(topic => <li><a class="topic" href={`/category/${topic.path}/`}>
-          <span class="topic__name">{topic.name}</span>
-          <span class="topic__count measured muted">{topic.count} {topic.count === 1 ? 'post' : 'posts'}</span>
-        </a></li>)}
-      </ul>
-    </div>
-  </section>
-  <section id="archive" class="home-section">
-    <div class="container">
-      <h2>Every post</h2>
-      {years.map(year => { const yearPosts = posts.filter(post => postPath(post).startsWith(year + '/')); return (
-        <section class="year-row" aria-labelledby={`year-${year}`}>
-          <div class="year-row__label">
-            <h3 id={`year-${year}`}><a class="measured" href={`/${year}/`}>{year}</a></h3>
-            <p class="muted">{yearPosts.length} {yearPosts.length === 1 ? 'post' : 'posts'}</p>
-          </div>
-          <PostList posts={yearPosts} />
-        </section>); })}
-    </div>
-  </section>
+        <a href="/projects/" class="readmore">View all projects →</a>
+      </div>
+    </section>
+  )}
 </BaseLayout>
