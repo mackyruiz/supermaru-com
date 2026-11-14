@@ -1,7 +1,11 @@
 ---
 import { getEntry, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
 const page = (await getEntry('pages', 'about'))!;
 const { Content } = await render(page);
 ---
-<BaseLayout title={page.data.title} canonicalPath="/about/"><h1>{page.data.title}</h1><div class="prose"><Content /></div></BaseLayout>
+<BaseLayout title={page.data.title} canonicalPath="/about/">
+  <PageHead title={page.data.title} />
+  <div class="container page-body"><div class="prose"><Content /></div></div>
+</BaseLayout>

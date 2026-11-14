@@ -1,6 +1,7 @@
 ---
 import { allPosts, postPath } from '../../../lib/posts';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHead from '../../../components/PageHead.astro';
 import PostList from '../../../components/PostList.astro';
 export async function getStaticPaths() {
   const posts = await allPosts();
@@ -12,6 +13,8 @@ export async function getStaticPaths() {
 const { posts } = Astro.props;
 const { year, month } = Astro.params;
 const monthName = new Intl.DateTimeFormat('en-US', { month: 'long', timeZone: 'UTC' }).format(new Date(`${year}-${month}-01T12:00:00Z`));
-const title = `Posts from ${monthName} ${year}`;
 ---
-<BaseLayout title={title} canonicalPath={`/${year}/${month}/`}><h1>{title}</h1><PostList posts={posts} /></BaseLayout>
+<BaseLayout title={`Posts from ${monthName} ${year}`} canonicalPath={`/${year}/${month}/`}>
+  <PageHead title={`${monthName} ${year}`} count={posts.length} context={`published in ${monthName} ${year}`} trail={[{ href: `/${year}/`, name: year! }]} />
+  <div class="container page-body"><PostList posts={posts} /></div>
+</BaseLayout>

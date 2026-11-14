@@ -1,13 +1,16 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { postPath, formatDate } from '../lib/posts';
-interface Props { posts: CollectionEntry<'posts'>[] }
-const { posts } = Astro.props;
+import { categoryName, primaryCategory } from '../lib/taxonomies';
+interface Props { posts: CollectionEntry<'posts'>[]; showTopic?: boolean }
+const { posts, showTopic = true } = Astro.props;
 ---
-<ul class="post-list">
-  {posts.map((post) => <li>
-    <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
-    <a href={`/${postPath(post)}/`}>{post.data.title}</a>
-    {post.data.draft && <span class="chip">Draft</span>}
-  </li>)}
+<ul class="post-index" role="list">
+  {posts.map((post) => { const topic = primaryCategory(post.data.categories); return (
+    <li class="post-row">
+      <time class="measured muted" datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+      <a class="post-row__title" href={`/${postPath(post)}/`}>{post.data.title}</a>
+      {showTopic && topic && <a class="post-row__topic" href={`/category/${topic}/`}>{categoryName(topic)}</a>}
+      {post.data.draft && <span class="chip chip--draft">Draft</span>}
+    </li>); })}
 </ul>

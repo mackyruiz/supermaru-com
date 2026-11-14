@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  count?: number;
+  context?: string;
+  trail?: { href: string; name: string }[];
+}
+const { title, count, context, trail } = Astro.props;
+---
+<header class="page-head container">
+  {trail?.length && <nav aria-label="Breadcrumb" class="crumbs"><ol role="list">
+    {trail.map(item => <li><a href={item.href}>{item.name}</a></li>)}
+  </ol></nav>}
+  <h1>{title}</h1>
+  {count !== undefined && <p class="page-head__meta"><span class="measured">{count} {count === 1 ? 'post' : 'posts'}</span>{context ? <> {context}</> : null}</p>}
+</header>

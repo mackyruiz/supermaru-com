@@ -1,14 +1,20 @@
 ---
 import { allPosts } from '../../lib/posts';
 import { tags } from '../../data/taxonomies.json';
+import { tagName } from '../../lib/taxonomies';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
 import PostList from '../../components/PostList.astro';
 export async function getStaticPaths() {
   const posts = await allPosts();
   const paths = new Set([...tags.map(term => term.path), ...posts.flatMap(post => post.data.tags)]);
-  return [...paths].map(tag => ({ params: { tag }, props: { posts: posts.filter(post => post.data.tags.includes(tag)), name: tags.find(term => term.path === tag)?.name ?? tag } }));
+  return [...paths].map(tag => ({ params: { tag }, props: { posts: posts.filter(post => post.data.tags.includes(tag)) } }));
 }
-const { posts, name } = Astro.props;
-const title = `Tagged "${name}"`;
+const { posts } = Astro.props;
+const tag = Astro.params.tag!;
+const name = tagName(tag);
 ---
-<BaseLayout title={title} canonicalPath={`/tag/${Astro.params.tag}/`}><h1>{title}</h1><PostList posts={posts} /></BaseLayout>
+<BaseLayout title={`Tagged "${name}"`} canonicalPath={`/tag/${tag}/`}>
+  <PageHead title={name} count={posts.length} context={`tagged ${name}`} />
+  <div class="container page-body"><PostList posts={posts} /></div>
+</BaseLayout>
