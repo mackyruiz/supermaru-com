@@ -304,11 +304,6 @@ html { scrollbar-color: var(--color-rule-2) var(--color-paper); }
 .skill-category h3 { font-size: var(--text-md); margin-bottom: var(--space-sm); }
 .skill-category p { margin: 0; }
 
-.resume-download {
-  margin-top: var(--space-4xl);
-  text-align: center;
-}
-
 .links-list {
   display: grid;
   gap: var(--space-lg);
@@ -340,3 +335,45 @@ html { scrollbar-color: var(--color-rule-2) var(--color-paper); }
   font-weight: 500;
   color: var(--color-accent);
 }
+
+.project-hero { max-width: 56rem; margin: 0 0 var(--space-2xl); }
+.project-hero img {
+  display: block;
+  width: 100%;
+  max-height: 36rem;
+  object-fit: contain;
+  background: var(--color-paper-3);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-card);
+}
+
+.about-avatar { display: block; width: 100%; max-width: 32rem; height: auto; margin-bottom: var(--space-2xl); border-radius: var(--radius-card); }
+.about-note { font-size: var(--text-sm); }
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+  gap: var(--space-lg);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.badge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  height: 100%;
+  padding: var(--space-lg);
+  text-align: center;
+  background: var(--color-paper-2);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-card);
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: border-color var(--dur-short) var(--ease-out);
+}
+a.badge-card:hover { border-color: var(--color-accent); color: var(--color-ink); }
+.badge-card img { width: 120px; height: 120px; object-fit: contain; background: #fff; border-radius: var(--radius-card); }
+.badge-card span { font-weight: 500; }
+.badge-card .muted { font-weight: 400; font-size: var(--text-sm); }

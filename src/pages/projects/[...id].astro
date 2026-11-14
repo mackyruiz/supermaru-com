@@ -12,10 +12,10 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, description, date, tags, link, github } = project.data;
+const { title, description, date, tags, link, github, image } = project.data;
 const displayDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' }).format(date);
 ---
-<BaseLayout title={title} description={description} canonicalPath={`/projects/${project.id}/`}>
+<BaseLayout title={title} description={description} canonicalPath={`/projects/${project.id}/`} ogImage={image}>
   <article class="container page-body">
     <header class="project-header">
       <h1>{title}</h1>
@@ -34,6 +34,8 @@ const displayDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '
         </div>
       )}
     </header>
+
+    {image && <figure class="project-hero"><img src={image} alt="" decoding="async" /></figure>}
 
     <div class="prose">
       <Content />
