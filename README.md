@@ -11,13 +11,13 @@ npm run dev
 
 Dev server runs at http://localhost:4321
 
-## Adding Projects
+## Adding Posts
 
-Create a new markdown file in `src/content/projects/`:
+Create a new markdown file in `src/content/posts/`:
 
 ```markdown
 ---
-title: "Project Name"
+title: "Post Title"
 description: "Brief description"
 date: 2025-01-15
 tags: ["tag1", "tag2"]
@@ -26,10 +26,10 @@ link: "https://live-demo.com"
 github: "https://github.com/user/repo"
 ---
 
-Full project description and details here.
+Full post body and details here.
 ```
 
-Fields: `title`, `description`, `date` required; `tags`, `link`, `github`, `image`, `featured` (default `false`) optional. Featured projects (max 3, newest first) appear on the home page.
+Fields: `title`, `description`, `date` required; `tags`, `link`, `github`, `image`, `featured` (default `false`) optional. Featured posts (max 3, newest first) appear on the home page.
 
 ## Deployment
 

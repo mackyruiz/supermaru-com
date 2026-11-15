@@ -234,52 +234,52 @@ html { scrollbar-color: var(--color-rule-2) var(--color-paper); }
 }
 .home-section h2 { margin-bottom: var(--space-2xl); }
 
-.project-grid {
+.post-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: var(--space-xl);
   margin-block: var(--space-2xl);
 }
 
-.project-card {
+.post-card {
   padding: var(--space-xl);
   background: var(--color-paper-2);
   border: var(--rule-hair) solid var(--color-rule);
   border-radius: var(--radius-card);
 }
-.project-card h3 { margin: 0 0 var(--space-sm); }
-.project-card h3 a { text-decoration: none; }
-.project-card time { font-size: var(--text-sm); display: block; margin-bottom: var(--space-md); }
-.project-card p { margin: 0 0 var(--space-md); }
+.post-card h3 { margin: 0 0 var(--space-sm); }
+.post-card h3 a { text-decoration: none; }
+.post-card time { font-size: var(--text-sm); display: block; margin-bottom: var(--space-md); }
+.post-card p { margin: 0 0 var(--space-md); }
 
-.project-tags {
+.post-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
   margin-bottom: var(--space-md);
 }
 
-.project-links {
+.post-links {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-md);
   margin-top: var(--space-lg);
 }
-.project-link {
+.post-link {
   font-weight: 500;
   color: var(--color-accent);
 }
 
-.project-header {
+.post-header {
   padding-bottom: var(--space-2xl);
   border-bottom: var(--rule-hair) solid var(--color-rule);
   margin-bottom: var(--space-2xl);
 }
-.project-header h1 { margin-bottom: var(--space-md); }
-.project-header time { display: block; margin-bottom: var(--space-lg); }
-.project-header .project-tags { margin-bottom: var(--space-lg); }
+.post-header h1 { margin-bottom: var(--space-md); }
+.post-header time { display: block; margin-bottom: var(--space-lg); }
+.post-header .post-tags { margin-bottom: var(--space-lg); }
 
-.project-nav {
+.post-nav {
   margin-top: var(--space-4xl);
   padding-top: var(--space-2xl);
   border-top: var(--rule-hair) solid var(--color-rule);
@@ -336,8 +336,8 @@ html { scrollbar-color: var(--color-rule-2) var(--color-paper); }
   color: var(--color-accent);
 }
 
-.project-hero { max-width: 56rem; margin: 0 0 var(--space-2xl); }
-.project-hero img {
+.post-hero { max-width: 56rem; margin: 0 0 var(--space-2xl); }
+.post-hero img {
   display: block;
   width: 100%;
   max-height: 36rem;

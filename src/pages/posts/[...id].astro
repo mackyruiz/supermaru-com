@@ -3,46 +3,46 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  return projects.map(project => ({
-    params: { id: project.id },
-    props: { project },
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
   }));
 }
 
-const { project } = Astro.props;
-const { Content } = await render(project);
-const { title, description, date, tags, link, github, image } = project.data;
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, date, tags, link, github, image } = post.data;
 const displayDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' }).format(date);
 ---
-<BaseLayout title={title} description={description} canonicalPath={`/projects/${project.id}/`} ogImage={image}>
+<BaseLayout title={title} description={description} canonicalPath={`/posts/${post.id}/`} ogImage={image}>
   <article class="container page-body">
-    <header class="project-header">
+    <header class="post-header">
       <h1>{title}</h1>
       <time class="cool" datetime={date.toISOString()}>{displayDate}</time>
 
       {tags && tags.length > 0 && (
-        <div class="project-tags">
+        <div class="post-tags">
           {tags.map(tag => <span class="chip">{tag}</span>)}
         </div>
       )}
 
       {(link || github) && (
-        <div class="project-links">
-          {link && <a href={link} class="button">View Project</a>}
+        <div class="post-links">
+          {link && <a href={link} class="button">Open link</a>}
           {github && <a href={github} class="button button--secondary">View on GitHub</a>}
         </div>
       )}
     </header>
 
-    {image && <figure class="project-hero"><img src={image} alt="" decoding="async" /></figure>}
+    {image && <figure class="post-hero"><img src={image} alt="" decoding="async" /></figure>}
 
     <div class="prose">
       <Content />
     </div>
 
-    <nav class="project-nav">
-      <a href="/projects/">&larr; Back to Projects</a>
+    <nav class="post-nav">
+      <a href="/posts/">&larr; Back to Posts</a>
     </nav>
   </article>
 </BaseLayout>

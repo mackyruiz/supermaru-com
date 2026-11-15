@@ -1,17 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
+import PostCard from '../components/PostCard.astro';
 import { getCollection } from 'astro:content';
 
-const projects = await getCollection('projects');
-const featured = projects.filter(p => p.data.featured).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+const posts = await getCollection('posts');
+const featured = posts.filter(p => p.data.featured).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 ---
 <BaseLayout title="Macky Ruiz" description="Portfolio and resume" canonicalPath="/">
   <div class="container hero">
     <h1 class="display">Macky Ruiz</h1>
     <p class="lead">IT professional focused on networking, virtualization, automation, security, and IT operations.</p>
     <div class="hero-links">
-      <a href="/projects/" class="button">View Projects</a>
+      <a href="/posts/" class="button">View Posts</a>
       <a href="/contact/" class="button button--secondary">Get in Touch</a>
     </div>
   </div>
@@ -19,11 +19,11 @@ const featured = projects.filter(p => p.data.featured).sort((a, b) => b.data.dat
   {featured.length > 0 && (
     <section class="home-section">
       <div class="container">
-        <h2>Featured Projects</h2>
-        <div class="project-grid">
-          {featured.map(project => <ProjectCard project={project} />)}
+        <h2>Featured Posts</h2>
+        <div class="post-grid">
+          {featured.map(post => <PostCard post={post} />)}
         </div>
-        <a href="/projects/" class="readmore">View all projects →</a>
+        <a href="/posts/" class="readmore">View all posts →</a>
       </div>
     </section>
   )}

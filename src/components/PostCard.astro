@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { post: CollectionEntry<'posts'>; }
+const { post } = Astro.props;
+const { title, description, date, tags, link, github } = post.data;
+const displayDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', timeZone: 'UTC' }).format(date);
+---
+<article class="post-card">
+  <h3><a href={`/posts/${post.id}/`}>{title}</a></h3>
+  <time class="cool" datetime={date.toISOString()}>{displayDate}</time>
+  <p>{description}</p>
+  {tags && tags.length > 0 && (
+    <div class="post-tags">
+      {tags.map(tag => <span class="chip">{tag}</span>)}
+    </div>
+  )}
+  {(link || github) && (
+    <div class="post-links">
+      {link && <a href={link} class="post-link">Open link →</a>}
+      {github && <a href={github} class="post-link">GitHub →</a>}
+    </div>
+  )}
+</article>
