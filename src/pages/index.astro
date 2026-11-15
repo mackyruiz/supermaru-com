@@ -8,12 +8,15 @@ const featured = posts.filter(p => p.data.featured).sort((a, b) => b.data.date.v
 ---
 <BaseLayout title="Macky Ruiz" description="Portfolio and resume" canonicalPath="/">
   <div class="container hero">
-    <h1 class="display">Macky Ruiz</h1>
-    <p class="lead">IT professional focused on networking, virtualization, automation, security, and IT operations.</p>
-    <div class="hero-links">
-      <a href="/posts/" class="button">View Posts</a>
-      <a href="/contact/" class="button button--secondary">Get in Touch</a>
+    <div class="hero-text">
+      <h1 class="display">Macky Ruiz</h1>
+      <p class="lead">Notes from the lab on networking, virtualization, and security, since 2014.</p>
+      <div class="hero-links">
+        <a href="/posts/" class="button">View Posts</a>
+        <a href="/contact/" class="button button--secondary">Get in Touch</a>
+      </div>
     </div>
+    <img class="hero-art" src="/wp-content/uploads/2025/08/supermaru-logo-screenshot.png" alt="SuperMaru logo: illustrated portrait of Macky Ruiz" width="981" height="447" decoding="async" fetchpriority="high" />
   </div>
 
   {featured.length > 0 && (
